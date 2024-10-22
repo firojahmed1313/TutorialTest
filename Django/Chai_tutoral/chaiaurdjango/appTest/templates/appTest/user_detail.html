@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+USER DETAILS PAGE 
+{% endblock %}
+
+{% block Contains %}
+
+<h1>USER DATA : </h1>
+<div class='userS'>
+    <img src="{{user.image.url}}" alt="image" class="img-responsive" />
+    <h3 class="dddd">{{user.name}}</h3>
+    <h4>{{user.email}}</h4>
+</div>
+
+{% endblock Contains %}

@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+User Form
+{% endblock  %}
+
+{% block Contains %}
+form is here
+
+<form method="post">
+    {% csrf_token %}  <!-- This is important for POST requests -->
+    {{form}}
+    <button type="submit">Submit</button>
+</form>
+
+{% if data  %}
+<h2>Certificate : </h2>
+    {% for c in data  %}
+    
+    <li> {{c.certificate_name}}</li>
+    {% endfor %} 
+{% endif %}
+{% endblock  %}

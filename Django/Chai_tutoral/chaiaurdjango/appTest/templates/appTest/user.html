@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+ALL USER
+{% endblock %}
+
+{% block Contains %}
+<h1>All User: </h1>
+
+{% for u in user  %}
+
+<div class='userS'>
+    <h4>{{u.email}}</h4>
+    <a href="{% url 'user_detail' u.id %}">
+        <button type="button" >Details</button>
+    </a>
+</div>
+
+{% endfor  %}
+
+
+{% endblock Contains %}
