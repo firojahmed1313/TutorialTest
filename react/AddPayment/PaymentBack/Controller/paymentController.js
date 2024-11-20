@@ -7,6 +7,13 @@ dotenv.config();
 const razorpayInstance = createRazorpayInstance();
 export const createPaymentIntent=async(req,res)=>{
     const {id,amount}=req.body;
+    //console.log(id,amount);
+    if(!id || !amount){
+        res.json({
+            success:false,
+            message:"Please provide id and amount"
+        });
+    }
     const options={
         amount:amount*100,
         currency:'INR',
@@ -37,11 +44,17 @@ export const createPaymentIntent=async(req,res)=>{
 
 export const verifyPayment=async(req,res)=>{
     const {razorpay_payment_id,razorpay_order_id,razorpay_signature}=req.body;
+    //if(!razorpay_payment_id && !razorpay_order_id &&!razorpay_signature){
+        console.log(razorpay_payment_id,razorpay_order_id,razorpay_signature);
+    //}
     const secret=process.env.RAZORPAY_KEY_SECRET;
     const hmac = crypto.createHmac('sha256', secret);
     hmac.update(razorpay_order_id + "|" + razorpay_payment_id);
-    const result=hmac.digest('hex');
-    if(result===razorpay_signature){
+    const generated_signature=hmac.digest('hex');
+    //const generated_signature = hmac_sha256(razorpay_order_id + "|" + razorpay_payment_id, secret);
+    console.log(generated_signature);
+    console.log("result",generated_signature===razorpay_signature);
+    if(generated_signature===razorpay_signature){
         res.json({
             success:true,
             message:"Payment Successful"
