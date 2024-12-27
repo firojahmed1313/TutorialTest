@@ -1,0 +1,4 @@
+C001,Andrew Smith,123 Street A,qwrtyuoop@asdf,1234567890
+C002,Angela White,456 Street B,angela@example.com,9876543210
+C003,John Doe,789 Street C,john@example.com,1112223334
+C004,Annabelle Brown,321 Street D,annabelle@example.com,2223334445
